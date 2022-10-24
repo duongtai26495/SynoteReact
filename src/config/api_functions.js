@@ -2,7 +2,7 @@ import axios from "axios"
 import { USERNAME_LOCAL, FULLNAME_LOCAL } from "../store/constants"
 import { ACCESS_TOKEN } from "../store/constants"
 
-const HOST_URL = 'http://192.168.1.10:8080/'
+const HOST_URL = 'https://new-synote.herokuapp.com/'
 
 
 const loginWithUsernamePassword = async User => {
