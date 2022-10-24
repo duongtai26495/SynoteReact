@@ -1,0 +1,84 @@
+
+.authen-form{
+    max-width: 400px;
+}
+.img-spinner{
+    height: 30px;
+    margin-top: unset!important;
+}
+.btn-component{
+    height: 50px!important;
+    position: relative;
+    align-items: center;
+}
+.img-logo-authen{
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+.logo-header-mobile{
+    width: 30px;
+    margin:auto;
+}
+.header_nav_mobile div {
+    margin: auto;
+}
+.left-menu-bar{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    left:-100%;
+    transition: .3s;
+    display: flex;
+    flex-direction: row;
+}
+.show{
+    left:0;
+}
+.btn-close{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    right: 10px;
+}
+.btn-close i{
+    scale: 1.5;
+}
+.menu-bar-content{
+    width: 100%;
+    background-color: rgba(255,255,255,0.8);
+}
+.btn-component i{
+    margin-left: 10px;
+}
+.btn-component div {
+    align-items: center;
+}
+.menu-link{
+    padding:15px;
+    transition: .3s;
+}
+.menu-link:hover{
+    background-color: white;
+    color:black;
+}
+.diary-row{
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    font-size: 16px;
+    overflow: hidden;
+}
+.diary_content{
+    height: 80px;
+}
+.diary_time{
+    font-size: 12px;
+}
+@media only screen and (min-width: 1024px) {
+    .left-menu-bar{
+        width: 20vw;
+    }
+  }
