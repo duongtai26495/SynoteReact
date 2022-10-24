@@ -82,7 +82,6 @@ const addNewDiary = async diary =>{
 
   return await axios(config)
   .then(function (response) {
-    console.log(response.data.status)
   })
   .catch(function (error) {
     console.log(error);
@@ -172,7 +171,6 @@ const getUserInfoLogin = async (username,token) => {
     
     localStorage.setItem(USERNAME_LOCAL, result.username)
     localStorage.setItem(FULLNAME_LOCAL, result.full_name)
-    console.log("GET INFO: ",status)
   })
   .catch(function (error) {
     console.log(error);
