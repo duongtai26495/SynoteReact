@@ -6,7 +6,7 @@ import MyButton from '../components/MyButton';
 import { registerUser } from '../config/api_functions';
 
 const Register = () => {
-    const [dispatch] = useStore()
+    const [state, dispatch] = useStore()
     const [isLoading, setLoading] = React.useState(false)
 
     const [uFName, setUfname] = React.useState('')
@@ -26,7 +26,6 @@ const Register = () => {
             }
 
             const registerResult = await registerUser(UserRegister);
-            console.log(registerResult)
             if (registerResult === 'SUCCESS') {
                 localStorage.setItem(LOCAL_LOGIN_STATE,true)
                 dispatch(updateLoginState(true))
