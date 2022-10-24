@@ -82,7 +82,7 @@ const Register = () => {
                 <input className='w-full mt-3 rounded-md p-2 bg-slate-200' type={'text'} name='username' placeholder='Username' value={uName} onChange={(e) => setUname(e.target.value)} />
                 <input className='w-full mt-3 rounded-md p-2 bg-slate-200' type={'password'} name='password' placeholder='Password' value={uPw} onChange={(e) => setUpw(e.target.value)} />
                 {errorMsg === '' ? "" : <div className='mt-2 text-red-500'>{errorMsg}</div>}
-                <MyButton icon={<i className="fa-solid fa-arrow-right"></i>} onClick={RegisterHandle} title={'Go'} isLoading={isLoading} />
+                <MyButton color={' bg-cyan-700 text-white'}  icon={<i className="fa-solid fa-arrow-right"></i>} onClick={RegisterHandle} title={'Go'} isLoading={isLoading} />
             </div>
         </>
 

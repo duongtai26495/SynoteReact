@@ -2,7 +2,7 @@ import React from 'react'
 import spinner from '../images/loading_spinner.gif'
 
 
-const MyButton = ({isLoading, onClick = () =>{}, title, icon}) => {
+const MyButton = ({isLoading, onClick = () =>{}, title, icon, color}) => {
     const LoadingSpinner = () =>{
         return (
             <img src={spinner} className='img-spinner' />
@@ -17,9 +17,9 @@ const MyButton = ({isLoading, onClick = () =>{}, title, icon}) => {
             </div>
         )
     }
-
+    var style = color+' btn btn-component w-full rounded-md p-2 mt-3 flex flex-col justify-center'
   return (
-    <button className=' btn btn-component w-full rounded-md bg-cyan-500 p-2 mt-3 text-white flex flex-col justify-center' onClick={onClick}>
+    <button className={style} onClick={onClick}>
         {isLoading ? <LoadingSpinner/> : <ContentBtn />}
     </button>
   )

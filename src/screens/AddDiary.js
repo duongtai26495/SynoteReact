@@ -12,10 +12,12 @@ const AddDiary = () => {
 
     const navigate = useNavigate()
 
+    const [loading, setLoading] = useState(false)
     const [state, dispatch] = useStore()
     const [content, setContent] = useState('')
     const {userLoginState} = state
     const handleNewDiary = async () =>{
+      setLoading(true)
         var diary = {
           "content":content,
           "display":true
@@ -23,6 +25,7 @@ const AddDiary = () => {
         await addNewDiary(diary)
         dispatch(updateLoginState(!userLoginState))
         navigate("/")
+        setLoading(false)
         
     }
 
@@ -30,8 +33,8 @@ const AddDiary = () => {
    <div className='w-full p-2'>
         <h4 className='p-2'>Add new</h4>
         <ReactQuill className='content-field w-full rounded-md bg-slate-200 text-black p-2' theme="snow" value={content} onChange={setContent} />
-        <MyButton onClick={handleNewDiary} title={'Save'} icon={<i className="fa-solid fa-floppy-disk"></i>} />
-        <Link to="/" ><MyButton title={'Back'} icon={<i className="fa-regular fa-hand-point-left"></i>}/></Link>
+        <MyButton color={'bg-teal-700 text-white'} loading={loading} onClick={handleNewDiary} title={'Save'} icon={<i className="fa-solid fa-floppy-disk"></i>} />
+        <Link to="/" ><MyButton color={' bg-cyan-600 text-white'} title={'Back'} icon={<i className="fa-regular fa-hand-point-left"></i>}/></Link>
    </div>
   )
 }

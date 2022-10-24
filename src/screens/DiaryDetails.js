@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { getDiary, updateDiary } from '../config/api_functions'
+import { getDiary, updateDiary, deleteDiary } from '../config/api_functions'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useStore } from '../store';
@@ -16,7 +16,7 @@ const DiaryDetails = () => {
   const navigate = useNavigate()
   const [state, dispatch] = useStore()
   const { userLoginState } = state
-
+  const [loading, setLoading] = useState(false)
 
   const [content, setContent] = useState('')
   const [display, setDisplay] = useState(true)
@@ -28,7 +28,8 @@ const DiaryDetails = () => {
   }
 
   const handleEditDiary = async () => {
-    if(content != ''){
+    setLoading(true)
+    if(content !== ''){
       var diary = {
         "content":content,
         "display":display,
@@ -36,25 +37,38 @@ const DiaryDetails = () => {
       }
   
       let result = await updateDiary(diary)
-      console.log(result)
-      if(result == 'SUCCESS'){
-        dispatch(updateLoginState(!userLoginState))
-        navigate("/")
+      if(result === 'SUCCESS'){
+        getBack()
       }
     }
-    
+  }
+
+  const getBack = () =>{
+    setLoading(true)
+    dispatch(updateLoginState(!userLoginState))
+    navigate("/")
+    setLoading(false)
+  }
+
+  const removeDiary = async () => {
+    setLoading(true)
+      let result = await deleteDiary(id)
+      if(result === 'SUCCESS'){
+        getBack()
+      }
   }
 
   return (
     <div className='w-full p-2'>
-      <h4 className='p-2'>Add new</h4>
+      <h4 className='p-2'>Update</h4>
       <ReactQuill 
       className='content-field w-full rounded-md bg-slate-200 text-black p-2' 
       theme="snow" 
       value={content} 
       onChange={setContent} />
-      <MyButton onClick={handleEditDiary} title={'Save'} icon={<i className="fa-solid fa-floppy-disk"></i>} />
-      <MyButton onClick={() => navigate("/")} title={'Back'} icon={<i className="fa-regular fa-hand-point-left"></i>} />
+      <MyButton color={'bg-teal-700 text-white'} onClick={handleEditDiary} title={'Save'} loading={loading} icon={<i className="fa-solid fa-floppy-disk"></i>} />
+      <MyButton color={' bg-orange-600 text-white'} onClick={() => removeDiary()} title={'Delete'} loading={loading}  icon={<i className="fa-solid fa-trash"></i>} />
+      <MyButton color={'bg-cyan-600 text-white'} onClick={() => getBack()} title={'Back'} loading={loading}  icon={<i className="fa-regular fa-hand-point-left"></i>} />
     </div>
   )
 }

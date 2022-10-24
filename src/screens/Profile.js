@@ -25,7 +25,7 @@ const Profile = () => {
 
   return (
     <div className='container px-10 m-auto align-items-center'>
-      <MyButton onClick={userLogout} title={'Logout'} isLoading={isLoading} />
+      <MyButton color={'bg-pink-500 text-white'} onClick={userLogout} title={'Logout'} isLoading={isLoading} />
     </div>
   )
 }

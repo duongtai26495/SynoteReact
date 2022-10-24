@@ -3,6 +3,7 @@ import { USERNAME_LOCAL, FULLNAME_LOCAL } from "../store/constants"
 import { ACCESS_TOKEN } from "../store/constants"
 
 const HOST_URL = 'https://new-synote.herokuapp.com/'
+// const HOST_URL = 'http://192.168.1.10:8080/'
 
 
 const loginWithUsernamePassword = async User => {
@@ -208,11 +209,59 @@ const updateDiary = async Diary => {
   });
   
 }
+
+const deleteDiary = async id =>{
+  let url = HOST_URL + "diary/delete/"+id
+  let token = 'Bearer '+localStorage.getItem(ACCESS_TOKEN)
+
+
+var config = {
+  method: 'DELETE',
+  url,
+  headers: { 
+    'Authorization': token
+  }
+};
+
+return await axios(config)
+.then(function (response) {
+  let result = response.data
+  let status = result.status
+  return status
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+}
+
+const pingServer = async () => {
+  let url = HOST_URL
+  var config = {
+    method: 'GET',
+    url,
+    headers: { }
+  };
+  
+  return await axios(config)
+  .then(function (response) {
+    let result = response.data
+    console.log(result.msg)
+    let status = result.status
+    return status
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  
+}
 export {
   loginWithUsernamePassword,
   registerUser,
   getAllDiary,
   addNewDiary,
   getDiary,
-  updateDiary
+  updateDiary,
+  deleteDiary,
+  pingServer
 }
