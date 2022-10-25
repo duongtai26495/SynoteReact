@@ -7,10 +7,15 @@ const DiaryRow = ({ diary }) => {
 
 
     return (
-            <Link to={'/diary/' + diary.id} className=' diary-row w-full p-2 m-2 bg-white rounded-md mt-2 flex flex-col'>
-                <div className='diary_content'>{parse(content)}</div>
-                <p className='diary_time mt-2 w-full text-end'>{diary.last_edited}</p>
-            </Link>
+        <Link to={'/diary/' + diary.id} className=' diary-row w-full p-2 m-2 bg-white rounded-md mt-2 flex flex-col'>
+            <div className='diary_content'>
+                {parse(content)}
+                <form>
+                    
+                </form>
+            </div>
+            <p className='diary_time mt-2 w-full text-end'>{diary.last_edited}</p>
+        </Link>
     )
 }
 

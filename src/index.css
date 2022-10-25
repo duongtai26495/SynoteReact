@@ -1,4 +1,14 @@
-
+*{
+    padding:0px;
+    margin: 0px;
+}
+:root{
+    --background-main:url(/src/images/bg-2.jpg);
+    --color-primary:#22577E;
+    --color-secondary:#FFABE1;
+    --color-gradient-1:#937DC2;
+    --color-gradient-2:#C689C6;
+}
 .authen-form{
     max-width: 400px;
 }
@@ -70,12 +80,20 @@
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
     font-size: 16px;
     overflow: hidden;
+    background: #ffffff7a;
 }
 .diary_content{
     height: 80px;
 }
 .diary_time{
     font-size: 12px;
+}
+#root{
+    min-height: 100vh;
+    background-image: linear-gradient(130deg , white, var(--color-gradient-2),var(--color-gradient-1)) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 @media only screen and (min-width: 1024px) {
     .left-menu-bar{
